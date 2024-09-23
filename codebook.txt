@@ -1,0 +1,168 @@
+
+
+#include <bits/stdc++.h>
+
+using namespace std;
+
+#define optimize                      \
+    ios_base::sync_with_stdio(false); \
+    cin.tie(NULL)
+#define int long long
+#define MOD 1000000007
+#define pb push_back
+#define mp make_pair
+#define f first
+#define s second
+#define show(x)           \
+    for (auto i : x)      \
+        cout << i << ' '; \
+    cout << '\n';
+#define No cout << "No\n"
+#define no cout << "no\n"
+#define NO cout << "NO\n"
+#define Yes cout << "Yes\n"
+#define yes cout << "yes\n"
+#define YES cout << "YES\n"
+#define Case(a) cout << "Case " << a << ": "
+#define CaseN(a) cout << "Case " << a << ":\n"
+
+void IO(string filename)
+{
+    freopen((filename + ".in").c_str(), "r", stdin);
+    freopen((filename + ".out").c_str(), "w", stdout);
+}
+
+void vector_int(vector<int> &arr, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        int temp;
+        cin >> temp;
+        arr.pb(temp);
+    }
+}
+
+void set_int(set<int> &arr, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        int temp;
+        cin >> temp;
+        arr.insert(temp);
+    }
+}
+
+void vector_char(vector<char> &arr, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        char temp;
+        cin >> temp;
+        arr.pb(temp);
+    }
+}
+
+void set_char(set<char> &arr, int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        char temp;
+        cin >> temp;
+        arr.insert(temp);
+    }
+}
+
+int mex(vector<int> &arr, int N)
+{
+
+    // sort the array
+    sort(arr.begin(), arr.end());
+
+    int mex = 0;
+    for (int idx = 0; idx < N; idx++)
+    {
+        if (arr[idx] == mex)
+        {
+            // Increment mex
+            mex += 1;
+        }
+    }
+
+    // Return mex as answer
+    return mex;
+}
+
+void sortBySecondElement(vector<pair<char, int>> &vec)
+{
+    std::sort(vec.begin(), vec.end(), [](auto &left, auto &right)
+              { return left.second < right.second; });
+}
+
+int nthsum(int n)
+{
+    return (n * (n + 1)) / 2;
+}
+
+void dfs(int node)
+{
+    // problem stat
+    vector<int> g[10];
+    bool vis[10];
+    vis[node] = 1;
+    // after entering node
+    for (int child : g[node])
+    {
+        if (vis[child])
+            continue;
+        // before entering the child node
+        dfs(child);
+        // after visiting child node
+    }
+    // after visiting all child
+}
+void fillPrefixSum(int arr[], int n, int prefixSum[])
+{
+    prefixSum[0] = arr[0];
+    // Adding present element with previous element
+    for (int i = 1; i < n; i++)
+        prefixSum[i] = prefixSum[i - 1] + arr[i];
+}
+void solve(int t)
+{
+    int n, k;
+    cin >> n >> k;
+    int ans = 0;
+    int th = 0;
+    while (n--)
+    {
+        int x;
+        cin >> x;
+        if (x >= k)
+        {
+            th += x;
+        }
+        else if (x == 0 && th > 0)
+        {
+            th--;
+            ans += 1;
+        }
+        }
+    cout << ans << '\n';
+    return;
+}
+
+int32_t main()
+{
+    optimize;
+    //    IO("");
+
+    int t;
+    cin >> t;
+    // t = 1;
+    int tc = 1;
+    while (t--)
+    {
+        solve(tc++);
+    }
+    return (int)0;
+}
